@@ -1,0 +1,1108 @@
+<!-- =========================================================
+ SGI — Public Course Page (Single File)
+ Title: SGI — Eat to Live • Eat to Align (8-Week Course)
+ File: sgi-eat-to-live-8week.html
+
+ Notes:
+  - Static HTML. Works on GitHub Pages / Cloudflare Pages.
+  - Progress + checklists saved locally (localStorage).
+  - Put this file in SAME folder as: SwamiG.gif  (SGI logo)
+========================================================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#0b0b0f" />
+  <title>SwamiG Institute — Eat to Live • Eat to Align (8-Week Course)</title>
+  <meta name="description" content="SwamiG Institute (SGI) — 8-week public course synthesizing Ifá, Ayurveda, TCM, and How to Eat to Live principles into practical food discipline, timing, digestion, and longevity." />
+
+  <style>
+    :root{
+      --bg:#0b0b0f; --ink:#f3f4f6; --muted:#bfc3d1;
+      --card:rgba(20,20,28,.92); --soft:rgba(255,255,255,.06);
+      --border:rgba(255,255,255,.12);
+      --accent:#bb66ff; --accent2:#ffd166;
+      --ring:rgba(187,102,255,.35);
+      --ok:#4ade80; --warn:#fbbf24; --bad:#fb7185;
+      --shadow: 0 18px 50px rgba(0,0,0,.40);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; background:
+        radial-gradient(900px 500px at 20% -10%, rgba(187,102,255,.20), transparent 60%),
+        radial-gradient(900px 500px at 90% 10%, rgba(255,209,102,.16), transparent 60%),
+        var(--bg);
+      color:var(--ink);
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+    }
+    a{color:inherit}
+    .wrap{max-width:1150px;margin:0 auto;padding:28px 18px 80px}
+    header{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(to bottom, rgba(11,11,15,.90), rgba(11,11,15,.55));
+      border-bottom:1px solid var(--border);
+    }
+    .topbar{
+      max-width:1150px;margin:0 auto;padding:12px 18px;
+      display:flex; align-items:center; gap:14px; justify-content:space-between;
+    }
+    .brand{display:flex; align-items:center; gap:12px; min-width:220px}
+    .logo{
+      width:42px;height:42px;border-radius:12px;
+      border:1px solid var(--border);
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.12), rgba(255,255,255,.03));
+      overflow:hidden; box-shadow: 0 10px 26px rgba(0,0,0,.30);
+      display:grid; place-items:center;
+    }
+    .logo img{width:100%;height:100%;object-fit:cover;display:block}
+    .brand h1{margin:0;font-size:14px;line-height:1.25}
+    .brand .sub{color:var(--muted);font-size:12px}
+    .actions{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      text-decoration:none;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      user-select:none;
+      font-size:13px;
+    }
+    .pill:hover{transform: translateY(-1px); background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.20)}
+    .pill strong{font-weight:700}
+    .pill .dot{width:8px;height:8px;border-radius:999px;background:var(--accent)}
+    .pill.secondary .dot{background:var(--accent2)}
+    .pill.danger .dot{background:var(--bad)}
+    .hero{
+      margin-top:22px;
+      display:grid; grid-template-columns: 1.1fr .9fr; gap:16px;
+      align-items:stretch;
+    }
+    @media (max-width:900px){.hero{grid-template-columns:1fr}}
+    .card{
+      background: var(--card);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero .left{padding:22px}
+    .hero .right{padding:18px}
+    .kicker{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:7px 10px; border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size:12px;
+      letter-spacing:.2px;
+    }
+    .kicker .ring{
+      width:10px;height:10px;border-radius:999px;
+      background: radial-gradient(circle at 30% 30%, var(--accent), rgba(187,102,255,.10));
+      box-shadow: 0 0 0 4px rgba(187,102,255,.10);
+    }
+    h2{margin:12px 0 8px;font-size:30px;line-height:1.15}
+    .lead{color:var(--muted);margin:0 0 14px}
+    .meta{
+      display:flex; flex-wrap:wrap; gap:10px; margin-top:14px
+    }
+    .chip{
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      font-size:12px;
+      color: var(--muted);
+    }
+    .progressBox{
+      display:flex; flex-direction:column; gap:12px
+    }
+    .progressRow{display:flex; align-items:center; justify-content:space-between; gap:10px}
+    .progressRow .label{font-size:13px;color:var(--muted)}
+    .bar{
+      height:10px; border-radius:999px;
+      background: rgba(255,255,255,.06);
+      border:1px solid var(--border);
+      overflow:hidden;
+    }
+    .bar > i{
+      display:block;height:100%;
+      width:0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius:999px;
+      transition: width .25s ease;
+    }
+    .mini{
+      display:grid; grid-template-columns: repeat(2, 1fr); gap:10px;
+    }
+    @media (max-width:520px){.mini{grid-template-columns:1fr}}
+    .mini .tile{
+      padding:12px; border-radius:16px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+    }
+    .tile .t{font-size:12px;color:var(--muted);margin:0}
+    .tile .v{font-size:18px;margin:4px 0 0;font-weight:800}
+    .grid{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+    }
+    .col-8{grid-column: span 8;}
+    .col-4{grid-column: span 4;}
+    @media (max-width:900px){.col-8,.col-4{grid-column:1 / -1}}
+    .section{padding:18px}
+    .section h3{margin:0 0 8px;font-size:18px}
+    .section p{margin:0 0 10px;color:var(--muted)}
+    .note{
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-size:13px;
+    }
+    .week{
+      padding:16px;
+      border-radius: var(--radius);
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      position:relative;
+      overflow:hidden;
+    }
+    .week:before{
+      content:"";
+      position:absolute; inset:-80px -60px auto auto;
+      width:220px; height:220px; border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, rgba(187,102,255,.18), transparent 60%);
+      pointer-events:none;
+      filter: blur(0px);
+    }
+    .weekHead{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
+      margin-bottom:10px;
+    }
+    .weekTitle{
+      margin:0;
+      font-size:18px;
+      line-height:1.2;
+    }
+    .tagRow{display:flex; flex-wrap:wrap; gap:8px; margin-top:6px}
+    .tag{
+      font-size:12px; color:var(--muted);
+      padding:6px 9px; border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+    }
+    details{border-radius:16px;border:1px solid var(--border);background:rgba(255,255,255,.02);overflow:hidden}
+    summary{
+      cursor:pointer; list-style:none;
+      padding:12px 14px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      user-select:none;
+    }
+    summary::-webkit-details-marker{display:none}
+    .sumL{display:flex; align-items:center; gap:10px}
+    .badge{
+      width:26px;height:26px;border-radius:10px;
+      display:grid;place-items:center;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      font-weight:900;
+      color: var(--ink);
+      flex:0 0 auto;
+    }
+    .caret{color:var(--muted);font-size:12px}
+    .panel{padding:0 14px 14px}
+    ul{margin:8px 0 0 18px;color:var(--muted)}
+    .checklist{
+      margin-top:12px;
+      display:grid; gap:8px;
+    }
+    .item{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:10px 10px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+    }
+    .item input{margin-top:3px; transform: scale(1.05)}
+    .item label{cursor:pointer}
+    .item small{display:block;color:var(--muted);margin-top:2px}
+    .btnRow{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
+    button{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--ink);
+      padding:10px 12px;
+      border-radius:14px;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      font-weight:700;
+    }
+    button:hover{transform: translateY(-1px); background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.20)}
+    .footer{
+      margin-top:18px;
+      padding:14px 16px;
+      border-radius: var(--radius);
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-size:12px;
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .muted{color:var(--muted)}
+    .small{font-size:12px}
+    .hr{height:1px;background:var(--border);margin:14px 0}
+    .stamp{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px; border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      font-size:12px; color:var(--muted);
+    }
+    .stamp i{width:10px;height:10px;border-radius:999px;background:var(--ok);display:inline-block}
+    .dangerText{color:#fecaca}
+    .okText{color:#bbf7d0}
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="topbar">
+    <div class="brand">
+      <a class="logo" href="https://swamiginstitute.com" title="SwamiGInstitute.com">
+        <img src="SwamiG.gif" alt="SwamiG Institute Logo" onerror="this.style.display='none'; this.parentElement.textContent='SGI'; this.parentElement.style.fontWeight='900'; this.parentElement.style.color='var(--ink)';">
+      </a>
+      <div>
+        <h1>SwamiG Institute</h1>
+        <div class="sub">Public Course • Food Discipline • Longevity</div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <a class="pill" href="#weeks"><span class="dot"></span><strong>Jump to Weeks</strong></a>
+      <a class="pill secondary" href="#cert"><span class="dot"></span><strong>Certification</strong></a>
+      <a class="pill danger" href="#tools"><span class="dot"></span><strong>Reset / Export</strong></a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="card left">
+      <div class="kicker"><span class="ring"></span> SGI Synthesis • Ifá • Ayurveda • TCM • “Eat to Live” Discipline</div>
+      <h2>Eat to Live • Eat to Align<br><span style="color:var(--muted);font-weight:700">8-Week Food Law Course</span></h2>
+      <p class="lead">
+        This course teaches a single universal law shared across multiple wisdom systems:
+        <strong>food is destiny discipline</strong>. We train appetite, protect digestion, restore rhythm, and cultivate longevity.
+      </p>
+
+      <div class="meta">
+        <div class="chip"><strong>Format:</strong> 8 weeks • practice-based</div>
+        <div class="chip"><strong>Audience:</strong> Iyawos • priests • disciplined seekers</div>
+        <div class="chip"><strong>Method:</strong> simple foods • timing • restraint</div>
+        <div class="chip"><strong>Tracking:</strong> saved on this device</div>
+      </div>
+
+      <div class="hr"></div>
+      <div class="note">
+        <strong>Core Law:</strong> Appetite must submit to reason.
+        Overeating, late eating, and constant snacking weaken the body’s command center.
+      </div>
+    </div>
+
+    <aside class="card right">
+      <div class="progressBox">
+        <div class="progressRow">
+          <div class="label">Course Progress</div>
+          <div class="stamp" id="statusStamp"><i></i><span id="statusText">Not started</span></div>
+        </div>
+        <div class="bar" aria-label="Progress bar"><i id="barFill"></i></div>
+
+        <div class="mini">
+          <div class="tile">
+            <p class="t">Weeks completed</p>
+            <p class="v"><span id="weeksDone">0</span>/8</p>
+          </div>
+          <div class="tile">
+            <p class="t">Checklist items done</p>
+            <p class="v"><span id="itemsDone">0</span>/<span id="itemsTotal">0</span></p>
+          </div>
+        </div>
+
+        <div class="note small">
+          Tip: Expand each week and check off the practice items. Everything is saved automatically in your browser.
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <section class="grid" id="weeks">
+    <div class="card section col-8">
+      <h3>Course Orientation</h3>
+      <p>
+        We treat diet as a daily ritual of alignment: digestion is transformation, timing is law, and restraint is power.
+        Each week includes teachings + practice + a closing insight.
+      </p>
+      <div class="note">
+        <strong>Operating Rules (all 8 weeks):</strong>
+        <ul>
+          <li>Eat with intention; stop before full.</li>
+          <li>Prioritize warm, simple meals.</li>
+          <li>Remove snacking; protect digestion.</li>
+          <li>Hydrate with warm water/tea unless medically contraindicated.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card section col-4" id="cert">
+      <h3>SGI Completion Standard</h3>
+      <p>Complete the weekly practice checklists and finalize your personal “Food Law” in Week 8.</p>
+      <div class="note">
+        <strong>Certification Evidence:</strong>
+        <ul>
+          <li>Weeks 1–8 practice checklists</li>
+          <li>Meal timing plan (Week 4)</li>
+          <li>Fasting rhythm (Week 5)</li>
+          <li>Personal Food Rule (Week 8)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- WEEK 1 -->
+    <div class="col-12">
+      <div class="week card">
+        <div class="weekHead">
+          <div>
+            <h3 class="weekTitle">Week 1 — Food Is Law</h3>
+            <div class="tagRow">
+              <span class="tag">Theme: Consciousness before consumption</span>
+              <span class="tag">Focus: intention • hunger • obedience</span>
+            </div>
+          </div>
+          <div class="stamp"><i></i><span class="muted">W1</span></div>
+        </div>
+
+        <details>
+          <summary>
+            <div class="sumL">
+              <div class="badge">1</div>
+              <div>
+                <div><strong>Teachings</strong></div>
+                <div class="muted small">Orí • Agni • Qi • appetite discipline</div>
+              </div>
+            </div>
+            <div class="caret">open ▾</div>
+          </summary>
+          <div class="panel">
+            <ul>
+              <li><strong>Ifá:</strong> Orí must agree with the mouth.</li>
+              <li><strong>Ayurveda:</strong> protect digestive fire (Agni).</li>
+              <li><strong>TCM:</strong> support Spleen–Qi / Stomach.</li>
+              <li><strong>Discipline teaching:</strong> appetite submits to reason.</li>
+            </ul>
+
+            <div class="checklist" data-week="1">
+              <div class="item">
+                <input type="checkbox" id="w1-1">
+                <label for="w1-1"><strong>Remove snacking</strong><small>Only meals; no “grazing.”</small></label>
+              </div>
+              <div class="item">
+                <input type="checkbox" id="w1-2">
+                <label for="w1-2"><strong>Eat only when truly hungry</strong><small>Distinguish hunger vs. craving.</small></label>
+              </div>
+              <div class="item">
+                <input type="checkbox" id="w1-3">
+                <label for="w1-3"><strong>Warm water rule</strong><small>Replace cold drinks with warm water/tea.</small></label>
+              </div>
+              <div class="item">
+                <input type="checkbox" id="w1-4">
+                <label for="w1-4"><strong>2-minute intention before meals</strong><small>Pause, breathe, choose restraint.</small></label>
+              </div>
+            </div>
+
+            <div class="note" style="margin-top:12px">
+              <strong>Initiatory Insight:</strong> Eating without intention is spiritual disobedience.
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- WEEK 2 -->
+    <div class="col-12">
+      <div class="week card">
+        <div class="weekHead">
+          <div>
+            <h3 class="weekTitle">Week 2 — Digestive Fire & Inner Heat</h3>
+            <div class="tagRow">
+              <span class="tag">Theme: warmth sustains life</span>
+              <span class="tag">Focus: cooked foods • no cold drinks</span>
+            </div>
+          </div>
+          <div class="stamp"><i></i><span class="muted">W2</span></div>
+        </div>
+
+        <details>
+          <summary>
+            <div class="sumL">
+              <div class="badge">2</div>
+              <div>
+                <div><strong>Teachings</strong></div>
+                <div class="muted small">digestion as transformation</div>
+              </div>
+            </div>
+            <div class="caret">open ▾</div>
+          </summary>
+          <div class="panel">
+            <ul>
+              <li>Cold foods/drinks weaken digestion and slow transformation.</li>
+              <li>Warm meals support energy, clarity, and steady appetite.</li>
+              <li>Midday digestion is strongest; build the day around it.</li>
+            </ul>
+
+            <div class="checklist" data-week="2">
+              <div class="item">
+                <input type="checkbox" id="w2-1">
+                <label for="w2-1"><strong>No cold drinks</strong><small>Warm water/tea only (unless medically necessary).</small></label>
+              </div>
+              <div class="item">
+                <input type="checkbox" id="w2-2">
+                <label for="w2-2"><strong>Warm meals only</strong><small>Cooked foods favored.</small></label>
+              </div>
+              <div class="item">
+                <input type="checkbox" id="w2-3">
+                <label for="w2-3"><strong>Largest meal midday</strong><small>Make lunch the anchor meal.</small></label>
+              </div>
+              <div class="item">
+                <input type="checkbox" id="w2-4">
+                <label for="w2-4"><strong>Stop at 80% full</strong><small>Leave space for digestion.</small></label>
+              </div>
+            </div>
+
+            <div class="note" style="margin-top:12px">
+              <strong>Initiatory Insight:</strong> Weak digestion equals weak destiny execution.
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- WEEK 3 -->
+    <div class="col-12">
+      <div class="week card">
+        <div class="weekHead">
+          <div>
+            <h3 class="weekTitle">Week 3 — Simplicity & Sacred Restraint</h3>
+            <div class="tagRow">
+              <span class="tag">Theme: fewer foods, greater power</span>
+              <span class="tag">Focus: stop mixing • plain meals</span>
+            </div>
+          </div>
+          <div class="stamp"><i></i><span class="muted">W3</span></div>
+        </div>
+
+        <details>
+          <summary>
+            <div class="sumL">
+              <div class="badge">3</div>
+              <div>
+                <div><strong>Teachings</strong></div>
+                <div class="muted small">simplicity purifies blood & mind</div>
+              </div>
+            </div>
+            <div class="caret">open ▾</div>
+          </summary>
+          <div class="panel">
+            <ul>
+              <li>Complex, mixed meals burden digestion and excite cravings.</li>
+              <li>Simple foods clarify appetite and stabilize energy.</li>
+              <li>Plain eating trains mastery; flavor addiction weakens command.</li>
+            </ul>
+
+            <div class="checklist" data-week="3">
+              <div class="item">
+                <input type="checkbox" id="w3-1">
+                <label for="w3-1"><strong>1–2 items per meal</strong><small>Example: beans + greens; rice + vegetables.</small></label>
+              </div>
+              <div class="item">
+                <input type="checkbox" id="w3-2">
+                <label for="w3-2"><strong>No fried foods</strong><small>Choose steamed, baked, stewed.</small></label>
+              </div>
+              <div class="item">
+                <input type="checkbox" id="w3-3">
+                <label for="w3-3"><strong>No sweets / sugar</strong><small>Remove desserts and sweet drinks.</small></label>
+              </div>
+              <div class="item">
+                <input type="checkbox" id="w3-4">
+                <label for="w3-4"><strong>Minimal seasoning</strong><small>Let appetite calm down.</small></label>
+              </div>
+            </div>
+
+            <div class="note" style="margin-top:12px">
+              <strong>Initiatory Insight:</strong> Simplicity is a priestly discipline.
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- WEEK 4 -->
+    <div class="col-12">
+      <div class="week card">
+        <div class="weekHead">
+          <div>
+            <h3 class="weekTitle">Week 4 — Meal Timing & Circadian Law</h3>
+            <div class="tagRow">
+              <span class="tag">Theme: timing is law</span>
+              <span class="tag">Focus: early eating • no late meals</span>
+            </div>
+          </div>
+          <div class="stamp"><i></i><span class="muted">W4</span></div>
+        </div>
+
+        <details>
+          <summary>
+            <div class="sumL">
+              <div class="badge">4</div>
+              <div>
+                <div><strong>Teachings</strong></div>
+                <div class="muted small">nature keeps time • organs obey</div>
+              </div>
+            </div>
+            <div class="caret">open ▾</div>
+          </summary>
+          <div class="panel">
+            <ul>
+              <li>Midday is best for digestion; night eating disrupts repair.</li>
+              <li>Eating windows stabilize appetite and reduce inflammation.</li>
+              <li>Consistency builds power: your body learns the rhythm.</li>
+            </ul>
+
+            <div class="checklist" data-week="4">
+              <div class="item">
+                <input type="checkbox" id="w4-1">
+                <label for="w4-1"><strong>Eat within a window</strong><small>Example: 10am–6pm (adjust as needed).</small></label>
+              </div>
+              <div class="item">
+                <input type="checkbox" id="w4-2">
+                <label for="w4-2"><strong>No food after sunset</strong><small>Let the body repair at night.</small></label>
+              </div>
+              <div class="item">
+                <input type="checkbox" id="w4-3">
+                <label for="w4-3"><strong>Midday anchor meal</strong><small>Make lunch the most substantial meal.</small></label>
+              </div>
+              <div class="item">
+                <input type="checkbox" id="w4-4">
+                <label for="w4-4"><strong>Create your timing plan</strong><small>Write your daily meal times below.</small></label>
+              </div>
+            </div>
+
+            <div class="note" style="margin-top:12px">
+              <strong>Timing Plan (write it):</strong><br>
+              <textarea id="timingPlan" rows="3" style="width:100%;margin-top:8px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.03);color:var(--ink);padding:10px"
+                placeholder="Example: Meal 1 (11:30am) • Meal 2 (4:30pm) • No food after 6pm"></textarea>
+            </div>
+
+            <div class="note" style="margin-top:12px">
+              <strong>Initiatory Insight:</strong> Nature keeps time — your body obeys it.
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- WEEK 5 -->
+    <div class="col-12">
+      <div class="week card">
+        <div class="weekHead">
+          <div>
+            <h3 class="weekTitle">Week 5 — Fasting, Restraint & Renewal</h3>
+            <div class="tagRow">
+              <span class="tag">Theme: emptiness heals</span>
+              <span class="tag">Focus: one-meal days • cleansing pauses</span>
+            </div>
+          </div>
+          <div class="stamp"><i></i><span class="muted">W5</span></div>
+        </div>
+
+        <details>
+          <summary>
+            <div class="sumL">
+              <div class="badge">5</div>
+              <div>
+                <div><strong>Teachings</strong></div>
+                <div class="muted small">renewal through restraint</div>
+              </div>
+            </div>
+            <div class="caret">open ▾</div>
+          </summary>
+          <div class="panel">
+            <ul>
+              <li>Periodic emptiness restores sensitivity to hunger and satisfaction.</li>
+              <li>Fasting is not punishment; it is a repair window.</li>
+              <li>Use light herbal teas/warm water; keep activity moderate.</li>
+            </ul>
+
+            <div class="checklist" data-week="5">
+              <div class="item">
+                <input type="checkbox" id="w5-1">
+                <label for="w5-1"><strong>One-meal day (1)</strong><small>Choose a day this week.</small></label>
+              </div>
+              <div class="item">
+                <input type="checkbox" id="w5-2">
+                <label for="w5-2"><strong>One-meal day (2)</strong><small>Choose a second day this week.</small></label>
+              </div>
+              <div class="item">
+                <input type="checkbox" id="w5-3">
+                <label for="w5-3"><strong>Hydration discipline</strong><small>Warm water/tea through the day.</small></label>
+              </div>
+              <div class="item">
+                <input type="checkbox" id="w5-4">
+                <label for="w5-4"><strong>Observe appetite signals</strong><small>Note what triggers cravings (stress, boredom, etc.).</small></label>
+              </div>
+            </div>
+
+            <div class="note" style="margin-top:12px">
+              <strong>Initiatory Insight:</strong> Hunger reveals the difference between need and desire.
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- WEEK 6 -->
+    <div class="col-12">
+      <div class="week card">
+        <div class="weekHead">
+          <div>
+            <h3 class="weekTitle">Week 6 — Blood, Organs & Longevity</h3>
+            <div class="tagRow">
+              <span class="tag">Theme: food builds the blood</span>
+              <span class="tag">Focus: roots • greens • legumes • grains</span>
+            </div>
+          </div>
+          <div class="stamp"><i></i><span class="muted">W6</span></div>
+        </div>
+
+        <details>
+          <summary>
+            <div class="sumL">
+              <div class="badge">6</div>
+              <div>
+                <div><strong>Teachings</strong></div>
+                <div class="muted small">clean blood → clear thought</div>
+              </div>
+            </div>
+            <div class="caret">open ▾</div>
+          </summary>
+          <div class="panel">
+            <ul>
+              <li>Blood carries memory and energy; clean inputs create clear output.</li>
+              <li>Build meals around plants and simple staples.</li>
+              <li>Avoid stimulants that “borrow” energy and disturb sleep.</li>
+            </ul>
+
+            <div class="checklist" data-week="6">
+              <div class="item">
+                <input type="checkbox" id="w6-1">
+                <label for="w6-1"><strong>Roots this week</strong><small>Yams/sweet potato/carrots/turnips, etc.</small></label>
+              </div>
+              <div class="item">
+                <input type="checkbox" id="w6-2">
+                <label for="w6-2"><strong>Greens daily</strong><small>Spinach/kale/collards, etc.</small></label>
+              </div>
+              <div class="item">
+                <input type="checkbox" id="w6-3">
+                <label for="w6-3"><strong>Legumes or grains as base</strong><small>Beans/lentils/rice/oats, etc.</small></label>
+              </div>
+              <div class="item">
+                <input type="checkbox" id="w6-4">
+                <label for="w6-4"><strong>No stimulants</strong><small>Reduce caffeine; avoid late caffeine.</small></label>
+              </div>
+            </div>
+
+            <div class="note" style="margin-top:12px">
+              <strong>Initiatory Insight:</strong> Clean blood produces clear thought.
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- WEEK 7 -->
+    <div class="col-12">
+      <div class="week card">
+        <div class="weekHead">
+          <div>
+            <h3 class="weekTitle">Week 7 — Discipline Over Appetite</h3>
+            <div class="tagRow">
+              <span class="tag">Theme: mastery of desire</span>
+              <span class="tag">Focus: silence • awareness • stopping early</span>
+            </div>
+          </div>
+          <div class="stamp"><i></i><span class="muted">W7</span></div>
+        </div>
+
+        <details>
+          <summary>
+            <div class="sumL">
+              <div class="badge">7</div>
+              <div>
+                <div><strong>Teachings</strong></div>
+                <div class="muted small">appetite trained, not indulged</div>
+              </div>
+            </div>
+            <div class="caret">open ▾</div>
+          </summary>
+          <div class="panel">
+            <ul>
+              <li>Eating in distraction strengthens craving loops.</li>
+              <li>Silence restores awareness; awareness restores control.</li>
+              <li>Stopping early is power; fullness is weakness.</li>
+            </ul>
+
+            <div class="checklist" data-week="7">
+              <div class="item">
+                <input type="checkbox" id="w7-1">
+                <label for="w7-1"><strong>No screens while eating</strong><small>Meals without phone/TV.</small></label>
+              </div>
+              <div class="item">
+                <input type="checkbox" id="w7-2">
+                <label for="w7-2"><strong>Silence during first 5 minutes</strong><small>Eat slowly; observe taste & satiety.</small></label>
+              </div>
+              <div class="item">
+                <input type="checkbox" id="w7-3">
+                <label for="w7-3"><strong>Stop before full</strong><small>Leave space for digestion.</small></label>
+              </div>
+              <div class="item">
+                <input type="checkbox" id="w7-4">
+                <label for="w7-4"><strong>Craving audit</strong><small>Write your top 2 triggers below.</small></label>
+              </div>
+            </div>
+
+            <div class="note" style="margin-top:12px">
+              <strong>Craving Triggers (write it):</strong><br>
+              <textarea id="cravingAudit" rows="3" style="width:100%;margin-top:8px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.03);color:var(--ink);padding:10px"
+                placeholder="Example: late-night boredom • stress after work"></textarea>
+            </div>
+
+            <div class="note" style="margin-top:12px">
+              <strong>Initiatory Insight:</strong> Appetite mastered = destiny unlocked.
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- WEEK 8 -->
+    <div class="col-12">
+      <div class="week card">
+        <div class="weekHead">
+          <div>
+            <h3 class="weekTitle">Week 8 — Living the Law of Food</h3>
+            <div class="tagRow">
+              <span class="tag">Theme: lifelong path</span>
+              <span class="tag">Focus: personal rule • seasonal adjustment • weekly rhythm</span>
+            </div>
+          </div>
+          <div class="stamp"><i></i><span class="muted">W8</span></div>
+        </div>
+
+        <details>
+          <summary>
+            <div class="sumL">
+              <div class="badge">8</div>
+              <div>
+                <div><strong>Teachings</strong></div>
+                <div class="muted small">eat to live • live to serve</div>
+              </div>
+            </div>
+            <div class="caret">open ▾</div>
+          </summary>
+          <div class="panel">
+            <ul>
+              <li>Food becomes a daily ritual: timing, restraint, and simplicity.</li>
+              <li>Create a sustainable rhythm you can live for years.</li>
+              <li>Adjust with seasons, workload, and recovery needs.</li>
+            </ul>
+
+            <div class="checklist" data-week="8">
+              <div class="item">
+                <input type="checkbox" id="w8-1">
+                <label for="w8-1"><strong>Write your Personal Food Law</strong><small>One paragraph rule you will follow.</small></label>
+              </div>
+              <div class="item">
+                <input type="checkbox" id="w8-2">
+                <label for="w8-2"><strong>Set weekly fasting rhythm</strong><small>Pick 1–2 days or one partial day weekly.</small></label>
+              </div>
+              <div class="item">
+                <input type="checkbox" id="w8-3">
+                <label for="w8-3"><strong>Seasonal adjustment plan</strong><small>Warm foods in cold seasons; lighter foods in heat.</small></label>
+              </div>
+              <div class="item">
+                <input type="checkbox" id="w8-4">
+                <label for="w8-4"><strong>Finalize your maintenance menu</strong><small>List your “default” simple meals.</small></label>
+              </div>
+            </div>
+
+            <div class="note" style="margin-top:12px">
+              <strong>Personal Food Law (write it):</strong><br>
+              <textarea id="foodLaw" rows="4" style="width:100%;margin-top:8px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.03);color:var(--ink);padding:10px"
+                placeholder="Example: I eat within my window, keep meals simple, avoid late eating, fast weekly, and stop before full. I eat to live and serve."></textarea>
+            </div>
+
+            <div class="note" style="margin-top:12px">
+              <strong>Maintenance Meals (write it):</strong><br>
+              <textarea id="maintenanceMeals" rows="4" style="width:100%;margin-top:8px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.03);color:var(--ink);padding:10px"
+                placeholder="Examples: lentils + greens • rice + vegetables • oats • beans + sweet potato"></textarea>
+            </div>
+
+            <div class="note" style="margin-top:12px">
+              <strong>Initiatory Charge:</strong> Eat to live. Live to serve. Serve in balance.
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="grid" id="tools">
+    <div class="card section col-8">
+      <h3>Tools</h3>
+      <p>Export your progress as text, or reset the course on this device.</p>
+      <div class="btnRow">
+        <button id="btnExport">Export Progress (Copy)</button>
+        <button id="btnOpenAll">Open All Weeks</button>
+        <button id="btnCloseAll">Close All Weeks</button>
+        <button id="btnReset">Reset All Progress</button>
+      </div>
+      <div class="note small" id="exportBox" style="margin-top:12px; display:none; white-space:pre-wrap"></div>
+      <div class="note small" style="margin-top:12px">
+        <strong>Privacy:</strong> All progress is stored locally in your browser (localStorage). No data is sent anywhere.
+      </div>
+    </div>
+
+    <div class="card section col-4">
+      <h3>SGI Note</h3>
+      <p class="muted">
+        This is a discipline course for alignment and wellness education. It is not medical advice.
+        If you have health conditions or take medication, consult a qualified professional before fasting
+        or making major diet changes.
+      </p>
+      <div class="note">
+        <strong>Completion Marker:</strong><br>
+        <span class="okText">All weeks complete</span> = progress bar at 100% and Week 8 writings filled.
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    <div>© <span id="year"></span> SwamiG Institute • Public Course Page</div>
+    <div class="muted">“Food is law. Appetite must submit to reason.”</div>
+  </div>
+</main>
+
+<script>
+(() => {
+  const KEY = "sgi_eat_to_live_8wk_v1";
+  const yearEl = document.getElementById("year");
+  yearEl.textContent = new Date().getFullYear();
+
+  // Collect all checkboxes and textareas we manage
+  const boxes = Array.from(document.querySelectorAll('input[type="checkbox"][id^="w"]'));
+  const textareas = [
+    { id:"timingPlan", label:"Week 4 Timing Plan" },
+    { id:"cravingAudit", label:"Week 7 Craving Audit" },
+    { id:"foodLaw", label:"Week 8 Personal Food Law" },
+    { id:"maintenanceMeals", label:"Week 8 Maintenance Meals" },
+  ].map(x => ({...x, el: document.getElementById(x.id)}));
+
+  const ui = {
+    barFill: document.getElementById("barFill"),
+    weeksDone: document.getElementById("weeksDone"),
+    itemsDone: document.getElementById("itemsDone"),
+    itemsTotal: document.getElementById("itemsTotal"),
+    statusText: document.getElementById("statusText"),
+    statusStamp: document.getElementById("statusStamp"),
+    exportBox: document.getElementById("exportBox"),
+    btnExport: document.getElementById("btnExport"),
+    btnReset: document.getElementById("btnReset"),
+    btnOpenAll: document.getElementById("btnOpenAll"),
+    btnCloseAll: document.getElementById("btnCloseAll"),
+  };
+
+  const weekChecklistMap = new Map(); // week -> checkbox els
+  boxes.forEach(b => {
+    const m = b.id.match(/^w(\d+)-/);
+    if(!m) return;
+    const wk = Number(m[1]);
+    if(!weekChecklistMap.has(wk)) weekChecklistMap.set(wk, []);
+    weekChecklistMap.get(wk).push(b);
+  });
+
+  function load(){
+    try{
+      const raw = localStorage.getItem(KEY);
+      if(!raw) return { checks:{}, notes:{} };
+      const data = JSON.parse(raw);
+      return {
+        checks: data.checks || {},
+        notes: data.notes || {}
+      };
+    }catch(e){
+      return { checks:{}, notes:{} };
+    }
+  }
+  function save(state){
+    localStorage.setItem(KEY, JSON.stringify(state));
+  }
+
+  let state = load();
+
+  // Apply saved to UI
+  boxes.forEach(b => {
+    b.checked = !!state.checks[b.id];
+    b.addEventListener("change", () => {
+      state.checks[b.id] = b.checked;
+      save(state);
+      refresh();
+    });
+  });
+
+  textareas.forEach(t => {
+    t.el.value = (state.notes[t.id] || "");
+    t.el.addEventListener("input", () => {
+      state.notes[t.id] = t.el.value;
+      save(state);
+      refresh();
+    });
+  });
+
+  function weekComplete(wk){
+    const arr = weekChecklistMap.get(wk) || [];
+    if(arr.length === 0) return false;
+    return arr.every(x => x.checked);
+  }
+
+  function allWeeksComplete(){
+    for(let wk=1; wk<=8; wk++){
+      if(!weekComplete(wk)) return false;
+    }
+    // Also require key writings for Week 8 + Week 4/7 plans to be non-empty
+    const mustHave = ["timingPlan","cravingAudit","foodLaw","maintenanceMeals"];
+    return mustHave.every(id => (state.notes[id] || "").trim().length >= 8);
+  }
+
+  function refresh(){
+    const total = boxes.length;
+    const done = boxes.filter(b => b.checked).length;
+
+    ui.itemsTotal.textContent = String(total);
+    ui.itemsDone.textContent = String(done);
+
+    let weeksDone = 0;
+    for(let wk=1; wk<=8; wk++){
+      if(weekComplete(wk)) weeksDone++;
+    }
+    ui.weeksDone.textContent = String(weeksDone);
+
+    const pct = total ? Math.round((done/total)*100) : 0;
+    ui.barFill.style.width = pct + "%";
+
+    // Status
+    let status = "Not started";
+    if(done > 0) status = "In progress";
+    if(weeksDone === 8) status = "Weeks complete";
+    if(allWeeksComplete()) status = "Certified complete";
+
+    ui.statusText.textContent = status;
+
+    // stamp color hint
+    const dot = ui.statusStamp.querySelector("i");
+    if(status === "Certified complete") dot.style.background = "var(--ok)";
+    else if(status === "Weeks complete") dot.style.background = "var(--warn)";
+    else if(status === "In progress") dot.style.background = "var(--accent)";
+    else dot.style.background = "rgba(255,255,255,.25)";
+  }
+
+  function exportText(){
+    const lines = [];
+    lines.push("SGI — Eat to Live • Eat to Align (8-Week Course)");
+    lines.push("Export created: " + new Date().toLocaleString());
+    lines.push("");
+
+    for(let wk=1; wk<=8; wk++){
+      lines.push(`WEEK ${wk} — ${weekComplete(wk) ? "COMPLETE" : "IN PROGRESS"}`);
+      const arr = (weekChecklistMap.get(wk) || []);
+      arr.forEach(b => {
+        const label = document.querySelector(`label[for="${b.id}"]`);
+        const text = label ? label.innerText.replace(/\s+/g," ").trim() : b.id;
+        lines.push(`  - [${b.checked ? "x":" "}] ${text}`);
+      });
+      lines.push("");
+    }
+
+    lines.push("NOTES / PLANS");
+    textareas.forEach(t => {
+      lines.push(`- ${t.label}:`);
+      lines.push((state.notes[t.id] || "").trim() ? state.notes[t.id].trim() : "(blank)");
+      lines.push("");
+    });
+
+    return lines.join("\n");
+  }
+
+  async function copyToClipboard(text){
+    try{
+      await navigator.clipboard.writeText(text);
+      return true;
+    }catch(e){
+      return false;
+    }
+  }
+
+  ui.btnExport.addEventListener("click", async () => {
+    const text = exportText();
+    ui.exportBox.style.display = "block";
+    ui.exportBox.textContent = text;
+
+    const ok = await copyToClipboard(text);
+    ui.btnExport.textContent = ok ? "Copied ✓" : "Export shown (copy manually)";
+    setTimeout(()=> ui.btnExport.textContent = "Export Progress (Copy)", 1500);
+  });
+
+  ui.btnOpenAll.addEventListener("click", () => {
+    document.querySelectorAll("details").forEach(d => d.open = true);
+    window.location.hash = "#weeks";
+  });
+
+  ui.btnCloseAll.addEventListener("click", () => {
+    document.querySelectorAll("details").forEach(d => d.open = false);
+    window.location.hash = "#weeks";
+  });
+
+  ui.btnReset.addEventListener("click", () => {
+    const sure = confirm("Reset ALL progress for this course on this device?");
+    if(!sure) return;
+    state = { checks:{}, notes:{} };
+    save(state);
+    boxes.forEach(b => b.checked = false);
+    textareas.forEach(t => t.el.value = "");
+    ui.exportBox.style.display = "none";
+    refresh();
+  });
+
+  // Initial render
+  refresh();
+})();
+</script>
+</body>
+</html>
